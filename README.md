@@ -11,7 +11,10 @@ When the header file is included in the program (`Bluetooth.h`) the `BT` class i
 `int Bluetooth.available(void);`
 
     // ex: check if there's something in the input buffer
-    Bluetooth.available();
+    if(Bluetooth.available())
+    {
+        // process data in buffer with Bluetooth.read()
+    }
     
 Same as [`Serial.available();`](http://arduino.cc/en/Serial/Available) for the Bluetooth module.
 
@@ -20,7 +23,7 @@ Same as [`Serial.available();`](http://arduino.cc/en/Serial/Available) for the B
 `int Bluetooth.peek(void);`
 
     // ex: get the first value in the input buffer without removing it from the buffer
-    Bluetooth.available();
+    char value = Bluetooth.peek();
     
 Same as [`Serial.peek();`](http://arduino.cc/en/Serial/Peek) for the Bluetooth module.
 
@@ -29,7 +32,7 @@ Same as [`Serial.peek();`](http://arduino.cc/en/Serial/Peek) for the Bluetooth m
 `int Bluetooth.read(void);`
 
     // ex: get the first value in the input buffer and remove it from the buffer
-    Bluetooth.read();
+    char value = Bluetooth.read();
     
 Same as [`Serial.read();`](http://arduino.cc/en/Serial/Read) for the Bluetooth module.
 
@@ -85,7 +88,7 @@ When pairing the Bluetooth module with a computer or a smartphone it requires a 
     // ex: change the Bluetooth module baud rate
     Bluetooth.setBaud("19200");
     
-In case faster data speeds are needed the baud rate (bits per second) can be changed with this method. It will take effect when the module is power cycled. Do not select a baud rate of 115200 or higher, it won't work for some reason and has to be reconfigured with something that can communicate that fast.
+In case faster data speeds are needed the baud rate (bits per second) can be changed with this method. It will take effect when the module is power cycled. **Do not select a baud rate of 115200 or higher**, it won't work for some reason and has to be reconfigured with something that can communicate that fast.
 
 The standard available baud rates are 4800, 9600, 19200, 38400, 57600, by default it's 9600.
 
@@ -117,7 +120,7 @@ This method automatically sets the Bluetooth module mode to master and listens t
     // if the command is successful (Bluetooth module responds with OK) the method will return true
     Bluetooth.command("AT OK", "OK");
 
-The HC-05 module is configured with AT commands (see the datasheet for all the available commands). To send an AT command this method will enable the AT mode by setting the AT pin to a logical 1 (pin 4 on the shield), send the command and terminate it with a `\r\n` as per the protocol.
+The HC-05 module is configured with AT commands (see the [datasheet](https://www.google.ch/search?q=hc-05+bluetooth+datasheet) for all the available commands). To send an AT command this method will enable the AT mode by setting the AT pin to a logical 1 (pin 4 on the shield), send the command and terminate it with a `\r\n` as per the protocol.
 
 The module will usually respond with `OK` for which the method will return `true` if it corresponds to the second argument `expReturn` (see the datasheet for command return values), otherwise it will always return `false`.
 

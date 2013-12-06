@@ -1,9 +1,10 @@
 /***************************************************************************************
  *
  * Title:       Remote LED
- * Description: Turn LED on and off depending on values 0 and 1 received by Bluetooth.
- * Tip:         You can send values 0 and 1 by running KeyboardToBluetooth.pde in 
- *              Processing and then pressing the UP arrow key.
+ * Description: Turn the on-board LED on and off by Bluetooth.
+ * Tip:         After upload, select the Bluetooth port with Tools > Port and send 1 
+ *              or 0 with the Serial Monitor. Don't forget to select the USB port back
+ *              before uploading.
  *
  ***************************************************************************************/
 #include <prismino.h>
@@ -27,15 +28,16 @@ void loop()
     // read value received by Bluetooth
     char val = Bluetooth.read();
     
-    if (val == 0)
+    switch (val)
     {
-      // turn LED on
-      digitalWrite(LED, HIGH);
-    }
-    else if (val == 1)
-    {
-      // turn LED off
-      digitalWrite(LED, LOW);
+      case '1':
+        // turn LED on
+        digitalWrite(LED, HIGH);
+        break;
+      case '0':
+        // turn LED off
+        digitalWrite(LED, LOW);
+        break;
     }
   }
   delay(1);

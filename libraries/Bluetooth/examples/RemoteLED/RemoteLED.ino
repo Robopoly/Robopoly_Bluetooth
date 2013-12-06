@@ -24,7 +24,7 @@ void setup()
 void loop()
 {
   if(Bluetooth.available())
-  { 
+  {
     // read value received by Bluetooth
     char val = Bluetooth.read();
     

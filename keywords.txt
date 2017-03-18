@@ -1,0 +1,37 @@
+#######################################
+# Syntax Coloring Map For Bluetooth
+# Only 1 tab between values and type!
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+BT	KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+available	KEYWORD2
+read	KEYWORD2
+write	KEYWORD2
+clearBuffer	KEYWORD2
+connect	KEYWORD2
+disconnect	KEYWORD2
+setName	KEYWORD2
+setPass	KEYWORD2
+setMode	KEYWORD2
+command	KEYWORD2
+search	KEYWORD2
+findBaud	KEYWORD2
+setBaud	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+MASTER	LITERAL1
+SLAVE	LITERAL1
+verbose	LITERAL1
